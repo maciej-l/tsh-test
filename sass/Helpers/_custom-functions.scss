@@ -1,0 +1,4 @@
+// set element size
+@function setSize($size: 16) {
+    @return ($size / 16) * 1rem;
+}
