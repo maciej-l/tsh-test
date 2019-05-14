@@ -12,13 +12,40 @@ import yargs from 'yargs';
 // Production environment
 const PRODUCTION = yargs.argv.prod;
 
-// Project dependences
-const dependences = [];
-
 // Project dirs
 const dirs = {
     dev: '.',
     prod: './prod'
+}
+
+// js files
+const jsFiles = {
+    dev: `${dirs.dev}/js/*.js`,
+    prod: `${dirs.prod}/assets/js`
+}
+
+// data files
+const dataFiles = {
+    dev: `${dirs.dev}/data/*.*`,
+    prod: `${dirs.prod}/assets/data`
+}
+
+// Project dependences
+const dependences = [
+    './node_modules/jquery/dist/jquery.slim.min.js',
+    './node_modules/bootstrap/dist/js/bootstrap.min.js'
+];
+
+// copy dependences to prod
+export const copyDependences = () => {
+    return src(dependences)
+        .pipe(gulpIf('*.js', dest(jsFiles.prod)));
+}
+
+// copy data to prod
+export const copyData = () => {
+    return src(dataFiles.dev)
+        .pipe(dest(dataFiles.prod));
 }
 
 // del paths
@@ -82,12 +109,6 @@ export const sassConvert = () => {
         .pipe(server.stream());
 }
 
-// js files
-const jsFiles = {
-    dev: `${dirs.dev}/js/*.js`,
-    prod: `${dirs.prod}/assets/js`
-}
-
 // js uglify
 export const jsUglify = () => {
     return src(jsFiles.dev)
@@ -106,10 +127,10 @@ export const watchForChanges = () => {
 }
 
 // Gulp develop task
-export const develop = series(clearProduction, htmlCopy, sassConvert, jsUglify, serve, watchForChanges);
+export const develop = series(clearProduction, copyDependences, htmlCopy, sassConvert, jsUglify, copyData, serve, watchForChanges);
 
 // Gulp production task
-export const buildForProd = series(clearProduction, htmlCopy, sassConvert, jsUglify);
+export const buildForProd = series(clearProduction, copyDependences, htmlCopy, sassConvert, jsUglify, copyData);
 
 // Gulp default task
 export default develop;
