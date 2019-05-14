@@ -32,12 +32,13 @@
                 <div class="col-12">
                     <form class="form-inline">
                         <div class="form-group">
-                            <label for=""></label>
-                            <input class="form-control" type="search" name="" id="">
+                            <input class="form-control" type="search" name="search-suppliers" id="search-suppliers" placeholder="Search suppliers">
                         </div>
-                        <select class="form-control" name="" id=""></select>
-                        <button type="reset" class="btn btn-secondary">Reset</button>
-                        <button type="submit" class="btn btn-primary">Search</button>
+                        <select class="form-control" name="pound-rating" id="pound-rating">
+                            <option value="">Select pound ating</option>
+                        </select>
+                        <button type="reset" id="reset-btn" class="btn btn-secondary">Reset</button>
+                        <button type="submit" id="search-btn" class="btn btn-primary disabled" disabled>Search</button>
                     </form>
                 </div>
             </div>
@@ -45,7 +46,7 @@
         <section class="table">
             <div class="row">
                 <div class="col-12">
-                    <table class="table table-striped">
+                    <table id="data-table" class="table table-striped">
                         <thead>
                             <tr>
                                 <th scope="col">Supplier</th>
@@ -54,22 +55,7 @@
                                 <th scope="col">Value</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <tr>
-                                <td>
-                                    Supplier name
-                                </td>
-                                <td>
-
-                                </td>
-                                <td>
-                                    499778
-                                </td>
-                                <td>
-                                    £1,620
-                                </td>
-                            </tr>
-                        </tbody>
+                        <tbody></tbody>
                     </table>
                 </div>
             </div>
@@ -97,7 +83,7 @@
             </div>
         </section>
     </div>
-    <script src="./assets/js/jquery.slim.min.js"></script>
+    <script src="./assets/js/jquery.min.js"></script>
     <script src="./assets/js/bootstrap.min.js"></script>
     <script src="./assets/js/app.js"></script>
 </body>
