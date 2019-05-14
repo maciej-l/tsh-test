@@ -30,7 +30,7 @@
             })
             .done(response => {
                 insertDataToTable(response);
-                buildSelec(response);
+                buildSelect(response);
                 console.log(response); //NOTE
             })
             .fail(error => {
@@ -55,7 +55,7 @@
                             ${value.reference}
                         </td>
                         <td>
-                            ${value.value}
+                            &#163; ${value.value}
                         </td>
                     </tr>
                 `;
@@ -66,7 +66,7 @@
         }
         
         // build select
-        const buildSelec = (data) => {
+        const buildSelect = (data) => {
             let $select = $(domElements.poundSelect),
                 subRating = [];
 
