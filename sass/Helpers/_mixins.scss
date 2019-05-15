@@ -1,0 +1,29 @@
+// Light gray gradient
+@mixin light-gray-gradient() {
+    background-color: #000000; // Old browsers
+    background-image: linear-gradient(to bottom,  #fff 0%, #dadcdc 100%,);
+}
+
+// Blue gradient
+@mixin blue-gradient() {
+    background-color: #3366cc; // Old browsers
+    background-image: linear-gradient(to bottom,  #62bfea 0%, #3366cc 100%);
+}
+
+// Dark gray gradient
+@mixin dark-gray-gradient() {
+    background-color: #606060; // Old browsers
+    background-image: radial-gradient(circle at center,  rgba(255,255,255, .2) 0%, rgba(96,96,96, 1) 100%);
+
+}
+
+// gradient 
+@mixin gradient($color) {
+    @if ($color == 'blue') {
+        @include blue-gradient();
+    } @else if ($color == 'gray') {
+        @include light-gray-gradient();
+    } @else if ($color == 'dark-gray') {
+        @include dark-gray-gradient();
+    }
+}

@@ -5,9 +5,21 @@
 
 // Color system
 
+$tsh-colors-palette: (
+  dove-gray: #666666,
+  estern-blue: #2288b7,
+  gray: #8a8a8a,
+  mercury: #e1e0e0,
+  mine-shaft: #3b3b3b,
+  white: #fff
+);
+
 $tsh-colors: (
-	mercury: #e1e0e0,
-	estern-blue: #2288b7
+  background-black: #000,
+  background-white: #fff,
+  badge-border-gray: color(gray),
+  default-theme-color: color(mine-shaft),
+  text-white: color(white)
 );
 
 

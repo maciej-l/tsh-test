@@ -1,0 +1,20 @@
+.badge {
+    padding-top: .4em;
+    padding-bottom: .4em;
+    font-size: setSize(15);
+    font-weight: 700;
+
+    &:not(:first-child) {
+        margin-left: setSize(5);
+    }
+
+    &.badge-light {
+        border: 1px solid setColor(badge-border-gray);
+        @include gradient('gray');
+    }
+
+    &.badge-active {
+        color: setColor(text-white);
+        @include gradient('blue');
+    }
+}
