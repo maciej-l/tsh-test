@@ -111,7 +111,7 @@
             $select.empty();
 
             // insert info to select
-            $select.append('<option value="">Select pound ating</option>');
+            $select.append('<option value="">Select pound rating</option>');
 
             // isert rating to pound rating select
             $.each(uniqueRating, (index, value) => {
