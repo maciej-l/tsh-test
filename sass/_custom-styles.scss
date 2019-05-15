@@ -1,5 +1,7 @@
 body {
-    height: 100vh;
+    @include media('>=lg') {
+        height: 100vh;
+    }
 }
 
 .container {
@@ -9,4 +11,13 @@ body {
 
 .border-radius {
     border-radius: setSize(5);
+}
+
+.modal-supplier-list {
+    list-style-type: none;
+
+    li {
+        margin: setSize(7) 0;
+        font-size: setSize(14);
+    }
 }

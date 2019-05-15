@@ -9,7 +9,11 @@
             searchInput: '#search-suppliers',
             resetBtn: '#reset-btn',
             searchBtn: '#search-btn',
-            paginationBtn: '.page-link'
+            paginationBtn: '.page-link',
+            modalSupplierName: '.supplier-name',
+            modalSupplierRatingContainer: '.rating-modal-container',
+            modalSupplierReference: '.supplier-reference',
+            modalSupplierValue: '.supplier-value'
         }
 
         return {
@@ -43,54 +47,53 @@
         const insertDataToTable = (data) => {
             const $tableBody = $(domElements.dataTable).find('tbody');
 
-            // insert pound rating badge to table and set active rating pound badge
-            const poundBadge = () => {
-                let $poundBadge = `<span class="badge badge-pill badge-light">&#163;</span>`,
-                    $badgeContainer = $('.badge-container'),
-                    i = 0;
-
-                    // insert pound badge to table cell
-                    while (i < 5) {
-                        $badgeContainer.prepend($poundBadge);
-                        i++;
-                    }
-                    
-                    $.each($badgeContainer, (index, value) => {
-                        let ratingCounter = $(value).data('rating'),
-                            $badge = $(value).children();
-
-                            $.each($badge, (i, v) => {
-                                if (i < ratingCounter) {
-                                    $(v).addClass('badge-active');
-                                }
-                            });
-                    });
-            }
-
             // clear table body
             $tableBody.empty();
 
+            // build table row with data
             $.each(data, (index, value) => {
-                let $tableRow = `
-                    <tr>
+                let $tableRow = (`
+                    <tr class="modal-handler">
                         <td class="name-container" data-name="${value.name}">
                             ${value.name}
                         </td>
                         <td class="badge-container" data-rating="${value.rating}"></td>
-                        <td class="reference-container">
+                        <td class="reference-container" data-reference="${value.reference}">
                             ${value.reference}
                         </td>
-                        <td class="value-container">
+                        <td class="value-container" data-value="${value.value}">
                             &#163; ${value.value}
                         </td>
                     </tr>
-                `;
+                `);
 
                 // append row to table
                 $tableBody.append($tableRow);
+                
+                $.each($('.badge-container'), (i,v) => {
+                    $(v).html(createPoundBadge($(v).data('rating')));
+                });
             });
+        }
 
-            poundBadge();
+        // create pound rating badge for table and modal and set active rating pound badge
+        const createPoundBadge = (rating) => {
+            let $badgeContainer = $('<div>'),
+                counter = 0;
+
+                // create pound badge and pass it to container
+                while (counter < 5) {
+                    let $poundBadge = $('<span class="badge badge-pill badge-light">&#163;</span>');
+
+                    // set active pound 
+                    if (counter < rating) {
+                        $poundBadge.addClass('badge-active');
+                    }
+                    
+                    $badgeContainer.append($poundBadge);
+                    counter++;
+                }
+            return $badgeContainer;
         }
         
         // build select
@@ -105,7 +108,6 @@
 
             // remove duplicated rating values
             let uniqueRating = [...new Set(subRating)].sort();
-
 
             // clear selec from options
             $select.empty();
@@ -151,13 +153,36 @@
             });
         }
 
-        
+        // Click event on table row to open Data modal
+        const dataTableModal = () => {
+            const $supplierName = $(domElements.modalSupplierName),
+                $supplierRating = $(domElements.modalSupplierRatingContainer),
+                $supplierReference = $(domElements.modalSupplierReference),
+                $supplierValue = $(domElements.modalSupplierValue);
+            
+            // click event on table row
+            $(document).on('click', 'tr.modal-handler', (event) => {
+                let supplierName = $(event.currentTarget).find('td').data('name'),
+                    supplierRating = $(event.currentTarget).find('td.badge-container').data('rating'),
+                    supplierReference =$(event.currentTarget).find('td.reference-container').data('reference'),
+                    supplierValue = $(event.currentTarget).find('td.value-container').data('value');
+
+                // Insert data to modal
+                $supplierName.text(supplierName);
+                $supplierRating.html(createPoundBadge(supplierRating));
+                $supplierReference.text(supplierReference);
+                $supplierValue.text(supplierValue);
+
+                // Show modal
+                $('.data-tabel-modal').modal('show');
+            });
+       }
 
         return {
             init: () => {
                 getData();
                 pagination();
-                // searchForm();
+                dataTableModal();
                 console.log('app is running'); //NOTE
             }
         }
