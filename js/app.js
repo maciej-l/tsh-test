@@ -126,15 +126,26 @@
 
             $paginationLink.on('click', (event) => {
                 event.preventDefault();
+                let $clickedPageLink = $(event.currentTarget);
 
+                // Remove active class from pagination element
                 if ($paginationLink.parent().hasClass('active')) {
                     $paginationLink.parent().removeClass('active');
                 }
 
-                if ($(event.currentTarget).attr('href') === 'start' || $(event.currentTarget).attr('href') === 'page-1') {
-                    getData('page1.json');
+                // Add active class to current page link
+                if ($clickedPageLink.attr('href') !== 'start' && $clickedPageLink.attr('href') !== 'end') {
+                    $clickedPageLink.parent().addClass('active');
+                } else if($clickedPageLink.attr('href') === 'start') {
+                    $($paginationLink[1]).parent().addClass('active');
+                } else if($clickedPageLink.attr('href') === 'end') {
+                    $($paginationLink[$paginationLink.length - 2]).parent().addClass('active');
+                }
 
-                } else if ($(event.currentTarget).attr('href') === 'end' || $(event.currentTarget).attr('href') === 'page-2') {
+                // check pagination and set active link item
+                if ($clickedPageLink.attr('href') === 'start' || $clickedPageLink.attr('href') === 'page-1') {
+                    getData('page1.json');
+                } else if ($clickedPageLink.attr('href') === 'end' || $clickedPageLink.attr('href') === 'page-2') {
                     getData('page2.json');
                 }
             });
