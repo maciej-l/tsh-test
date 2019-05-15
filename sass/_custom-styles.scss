@@ -1,5 +1,5 @@
 body {
-    @include media('>=lg') {
+    @include media('>=md') {
         height: 100vh;
     }
 }
@@ -15,6 +15,10 @@ body {
 
 .modal-supplier-list {
     list-style-type: none;
+    padding-left: 0;
+    @include media('>=lg') {
+        padding-left: setSize(40);
+    }
 
     li {
         margin: setSize(7) 0;

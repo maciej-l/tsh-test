@@ -3,6 +3,7 @@
     padding-bottom: .4em;
     font-size: setSize(15);
     font-weight: 700;
+    @include badgeShadow();
 
     &:not(:first-child) {
         margin-left: setSize(5);

@@ -7,7 +7,7 @@
         th {
             padding: setSize(26) setSize(29);
             border: none;
-            background-color: lightgray;
+            background-color: setColor(table-th-bcg);
         }
     }
 
@@ -20,19 +20,18 @@
 
         td {
             border: 1px solid setColor(table-border-gray);
+            color: setColor(table-text);
 
             &.name-container {
                 padding: setSize(20) setSize(29); 
             }
 
             &.badge-container {
-                width: 20%;
                 text-align: center;
             }
 
             &.reference-container,
             &.value-container {
-                width: 10%;
                 text-align: center;
             }
         }

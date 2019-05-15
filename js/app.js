@@ -61,7 +61,7 @@
                         <td class="reference-container" data-reference="${value.reference}">
                             ${value.reference}
                         </td>
-                        <td class="value-container" data-value="${value.value}">
+                        <td class="value-container" data-value="${value.value}" valign="center">
                             &#163; ${value.value}
                         </td>
                     </tr>

@@ -7,7 +7,9 @@
 
 $tsh-colors-palette: (
   alto: #e0e0e0,
+  black-haze: #eaecec,
   dove-gray: #666666,
+  emperor: #555555,
   estern-blue: #2288b7,
   gray: #8a8a8a,
   mercury: #e1e0e0,
@@ -21,9 +23,13 @@ $tsh-colors: (
   background-white: color(white),
   badge-border-gray: color(gray),
   default-theme-color: color(mine-shaft),
+  heading-blue: color(estern-blue),
   pagination-text: color(dove-gray),
+  table-th-bcg: color(black-haze),
+  text-gray: color(gray),
   text-white: color(white),
-  table-border-gray: color(alto)
+  table-border-gray: color(alto),
+  table-text: color(emperor)
 );
 
 
@@ -506,7 +512,7 @@ $input-focus-color:                     $input-color !default;
 $input-focus-width:                     $input-btn-focus-width !default;
 $input-focus-box-shadow:                $input-btn-focus-box-shadow !default;
 
-$input-placeholder-color:               $gray-600 !default;
+$input-placeholder-color:               $gray-500;
 $input-plaintext-color:                 $body-color !default;
 
 $input-height-border:                   $input-border-width * 2 !default;

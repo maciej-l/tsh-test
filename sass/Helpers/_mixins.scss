@@ -28,6 +28,11 @@
     }
 }
 
+// Shadow badges and pagination buttons
+@mixin badgeShadow() {
+    box-shadow: 0 2px 3px 0 rgba(0,0,0,0.15);
+}
+
 // RWD
 // $grid-breakpoints: (
     // xs: 0,
@@ -37,7 +42,11 @@
     // xl: 1200px
 // );
 @mixin media($res) {
-    @if ($res == '>=lg') {
+    @if ($res == '>=md') {
+        @media only screen and (min-width: map-get($grid-breakpoints, md)) {
+            @content;
+        }
+    } @else if ($res == '>=lg') {
         @media only screen and (min-width: map-get($grid-breakpoints, lg)) {
             @content;
         }
