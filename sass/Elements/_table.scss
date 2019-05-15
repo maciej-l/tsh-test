@@ -1,0 +1,40 @@
+.table {
+    border: 1px solid setColor(table-border-gray);
+    margin-bottom: 0;
+    border-radius: setSize(5);
+    
+    thead {
+        th {
+            padding: setSize(26) setSize(29);
+            border: none;
+            background-color: lightgray;
+        }
+    }
+
+    tbody {
+        tr {
+            &:hover {
+                cursor: pointer;
+            }
+        }
+
+        td {
+            border: 1px solid setColor(table-border-gray);
+
+            &.name-container {
+                padding: setSize(20) setSize(29); 
+            }
+
+            &.badge-container {
+                width: 20%;
+                text-align: center;
+            }
+
+            &.reference-container,
+            &.value-container {
+                width: 10%;
+                text-align: center;
+            }
+        }
+    }
+}

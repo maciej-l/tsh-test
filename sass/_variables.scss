@@ -6,6 +6,7 @@
 // Color system
 
 $tsh-colors-palette: (
+  alto: #e0e0e0,
   dove-gray: #666666,
   estern-blue: #2288b7,
   gray: #8a8a8a,
@@ -21,7 +22,8 @@ $tsh-colors: (
   badge-border-gray: color(gray),
   default-theme-color: color(mine-shaft),
   pagination-text: color(dove-gray),
-  text-white: color(white)
+  text-white: color(white),
+  table-border-gray: color(alto)
 );
 
 
@@ -130,7 +132,7 @@ $yiq-text-light:            $white !default;
 $enable-caret:                                true !default;
 $enable-rounded:                              true !default;
 $enable-shadows:                              false !default;
-$enable-gradients:                            false !default;
+$enable-gradients:                            true !default;
 $enable-transitions:                          true !default;
 $enable-prefers-reduced-motion-media-query:   true !default;
 $enable-hover-media-query:                    false !default; // Deprecated, no longer affects any compiled CSS
@@ -291,12 +293,12 @@ $embed-responsive-aspect-ratios: join(
 // Font, line-height, and color for body text, headings, and more.
 
 // stylelint-disable value-keyword-case
-$font-family-sans-serif:      'Source Sans Pro', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !default;
+$font-family-sans-serif:      'Helvetica', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !default;
 $font-family-monospace:       SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !default;
 $font-family-base:            $font-family-sans-serif !default;
 // stylelint-enable value-keyword-case
 
-$font-size-base:              1rem !default; // Assumes the browser default, typically `16px`
+$font-size-base:              12; // Assumes the browser default, typically `16px`
 $font-size-lg:                $font-size-base * 1.25 !default;
 $font-size-sm:                $font-size-base * .875 !default;
 
@@ -317,7 +319,7 @@ $h5-font-size:                $font-size-base * 1.25 !default;
 $h6-font-size:                $font-size-base !default;
 
 $headings-margin-bottom:      $spacer / 2 !default;
-$headings-font-family:        null !default;
+$headings-font-family:        'Source Sans Pro';
 $headings-font-weight:        500 !default;
 $headings-line-height:        1.2 !default;
 $headings-color:              null !default;
@@ -389,7 +391,7 @@ $table-dark-hover-bg:         rgba($white, .075) !default;
 $table-dark-border-color:     lighten($table-dark-bg, 7.5%) !default;
 $table-dark-color:            $white !default;
 
-$table-striped-order:         odd !default;
+$table-striped-order:         even;
 
 $table-caption-color:         $text-muted !default;
 

@@ -73,14 +73,14 @@
             $.each(data, (index, value) => {
                 let $tableRow = `
                     <tr>
-                        <td data-name="${value.name}">
+                        <td class="name-container" data-name="${value.name}">
                             ${value.name}
                         </td>
                         <td class="badge-container" data-rating="${value.rating}"></td>
-                        <td>
+                        <td class="reference-container">
                             ${value.reference}
                         </td>
-                        <td>
+                        <td class="value-container">
                             &#163; ${value.value}
                         </td>
                     </tr>
