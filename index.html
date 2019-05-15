@@ -42,7 +42,7 @@
                                 <button type="reset" id="reset-btn" class="btn btn-block btn-secondary fw-700">Reset</button>
                             </div>
                             <div class="col-6 col-lg-2">
-                                <button type="submit" id="search-btn" class="btn btn-block btn-primary fw-700" >Search</button>
+                                <button type="submit" id="search-btn" class="btn btn-block btn-primary fw-700 disabled" disabled>Search</button>
                             </div>
                         </div>
                     </form>
@@ -107,8 +107,8 @@
                                 <li>
                                     Supplier name: <span class="fw-700 supplier-name"></span>
                                 </li>
-                                <li>
-                                    Pound rating: <div class="rating-modal-container"></div>
+                                <li class="d-flex align-items-center">
+                                    Pound rating: <div class="ml-2 rating-modal-container"></div>
                                 </li>
                                 <li>
                                     Reference: <span class="fw-700 supplier-reference"></span>
