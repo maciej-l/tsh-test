@@ -34,9 +34,7 @@
                         <div class="form-group">
                             <input class="form-control" type="search" name="search-suppliers" id="search-suppliers" placeholder="Search suppliers">
                         </div>
-                        <select class="form-control" name="pound-rating" id="pound-rating">
-                            <option value="">Select pound ating</option>
-                        </select>
+                        <select class="form-control" name="pound-rating" id="pound-rating"></select>
                         <button type="reset" id="reset-btn" class="btn btn-secondary">Reset</button>
                         <button type="submit" id="search-btn" class="btn btn-primary disabled" disabled>Search</button>
                     </form>
@@ -66,16 +64,16 @@
                     <nav>
                         <ul class="pagination justify-content-center">
                             <li class="page-item">
-                                <a href="#" tabindex="-1" class="page-link">&lsaquo;</a>
+                                <a href="start" tabindex="-1" class="page-link">&lsaquo;</a>
+                            </li>
+                            <li class="page-item active">
+                                <a href="page-1" tabindex="-1" class="page-link">1</a>
                             </li>
                             <li class="page-item">
-                                <a href="#" tabindex="-1" class="page-link">1</a>
+                                <a href="page-2" tabindex="-1" class="page-link">2</a>
                             </li>
                             <li class="page-item">
-                                <a href="#" tabindex="-1" class="page-link">2</a>
-                            </li>
-                            <li class="page-item">
-                                <a href="#" tabindex="-1" class="page-link">&rsaquo;</a>
+                                <a href="end" tabindex="-1" class="page-link">&rsaquo;</a>
                             </li>
                         </ul>
                     </nav>

@@ -5,9 +5,11 @@
         const domStrings = {
             dataTable: '#data-table',
             poundSelect: '#pound-rating',
+            poundsRaitingBadge: '.badge-container',
             searchInput: '#search-suppliers',
             resetBtn: '#reset-btn',
-            searchBtn: '#search-btn'
+            searchBtn: '#search-btn',
+            paginationBtn: '.page-link'
         }
 
         return {
@@ -22,16 +24,15 @@
         const domElements = domCtrl.getDomStrings();
 
         // get data from file
-        const getData = () => {
+        const getData = (dataFile = 'page1.json') => {
             $.ajax({
-                url: './assets/data/page1.json',
+                url: `./assets/data/${dataFile}`,
                 method: 'GET',
                 dataType: 'json'
             })
             .done(response => {
                 insertDataToTable(response);
                 buildSelect(response);
-                console.log(response); //NOTE
             })
             .fail(error => {
                 alert(error.statusText);
@@ -40,7 +41,34 @@
 
         // build table
         const insertDataToTable = (data) => {
-            const $table = $(domElements.dataTable);
+            const $tableBody = $(domElements.dataTable).find('tbody');
+
+            // insert pound rating badge to table and set active rating pound badge
+            const poundBadge = () => {
+                let $poundBadge = `<span class="badge badge-pill badge-light">&#163;</span>`,
+                    $badgeContainer = $('.badge-container'),
+                    i = 0;
+
+                    // insert pound badge to table cell
+                    while (i < 5) {
+                        $badgeContainer.prepend($poundBadge);
+                        i++;
+                    }
+                    
+                    $.each($badgeContainer, (index, value) => {
+                        let ratingCounter = $(value).data('rating'),
+                            $badge = $(value).children();
+
+                            $.each($badge, (i, v) => {
+                                if (i < ratingCounter) {
+                                    $(v).addClass('badge-active');
+                                }
+                            });
+                    });
+            }
+
+            // clear table body
+            $tableBody.empty();
 
             $.each(data, (index, value) => {
                 let $tableRow = `
@@ -48,9 +76,7 @@
                         <td data-name="${value.name}">
                             ${value.name}
                         </td>
-                        <td data-rating="${value.rating}">
-                            ${value.rating}
-                        </td>
+                        <td class="badge-container" data-rating="${value.rating}"></td>
                         <td>
                             ${value.reference}
                         </td>
@@ -61,8 +87,10 @@
                 `;
 
                 // append row to table
-                $table.find('tbody').append($tableRow);
+                $tableBody.append($tableRow);
             });
+
+            poundBadge();
         }
         
         // build select
@@ -78,10 +106,37 @@
             // remove duplicated rating values
             let uniqueRating = [...new Set(subRating)].sort();
 
+
+            // clear selec from options
+            $select.empty();
+
+            // insert info to select
+            $select.append('<option value="">Select pound ating</option>');
+
             // isert rating to pound rating select
             $.each(uniqueRating, (index, value) => {
                 let $option = `<option value="${value}">${value}</option>`;
                 $select.append($option);
+            });
+        }
+
+        // Pagination
+        const pagination = () => {
+            const $paginationLink = $(domElements.paginationBtn);
+
+            $paginationLink.on('click', (event) => {
+                event.preventDefault();
+
+                if ($paginationLink.parent().hasClass('active')) {
+                    $paginationLink.parent().removeClass('active');
+                }
+
+                if ($(event.currentTarget).attr('href') === 'start' || $(event.currentTarget).attr('href') === 'page-1') {
+                    getData('page1.json');
+
+                } else if ($(event.currentTarget).attr('href') === 'end' || $(event.currentTarget).attr('href') === 'page-2') {
+                    getData('page2.json');
+                }
             });
         }
 
@@ -90,7 +145,8 @@
         return {
             init: () => {
                 getData();
-                searchForm();
+                pagination();
+                // searchForm();
                 console.log('app is running'); //NOTE
             }
         }
