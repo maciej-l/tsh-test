@@ -14,22 +14,22 @@ UWAGA: Odwzorowanie grafiki 1:1 jest wymaganiem podstawowym. Bez spełnienia teg
 4. Wykonany projekt wstaw na github lub inne repozytorium Git.
 
 ## Rozpoczęcie pracy w projekcie
-Instalacja niezbędnych pakietów po sklonowaniu repod do lokalnego folderu:
+Instalacja niezbędnych pakietów po sklonowaniu repo do lokalnego folderu:
 ``` 
 npm install
 ```
 ***
-1. Uruchomienie środowiska developerskiego
+Uruchomienie środowiska developerskiego
 ```
 npm run start
 ```
 ***
-2. Przygotowanie paczki produkcyjnej
+Przygotowanie paczki produkcyjnej
 ``` 
 npm run build-prod
 ```
 ***
-3. Uruchomienie projektu w środowisku produkcyjnym. 
+Uruchomienie projektu w środowisku produkcyjnym. 
 Ze względu na zabezpieczenie CORS w przeglądarce Chrome i Safari pliki z danymi załadują się prawidłowo tylo po uruchomienu serwera. 
 ```
 npm run start-prod
