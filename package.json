@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "gulp default",
-    "start-prod": "gulp runProduction",
+    "start-prod": "gulp runProduction --prod",
     "build-prod": "gulp buildForProd --prod"
   },
   "repository": {
