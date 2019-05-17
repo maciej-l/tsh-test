@@ -136,8 +136,8 @@ export const develop = series(clearProduction, copyDependences, htmlCopy, sassCo
 // Gulp production task
 export const buildForProd = series(clearProduction, copyDependences, htmlCopy, sassConvert, jsUglify, copyData);
 
-// Gulp run i production mode
-export const runProduction = series(serve);
+// Gulp run as production mode
+export const runProduction = series(clearProduction, copyDependences, htmlCopy, sassConvert, jsUglify, copyData, serve);
 
 // Gulp default task
 export default develop;
