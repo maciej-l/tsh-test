@@ -8,6 +8,7 @@ import autoprefixer from 'gulp-autoprefixer';
 import babel from 'gulp-babel';
 import uglify from 'gulp-uglify';
 import yargs from 'yargs';
+import consoleRemove from 'gulp-remove-logging';
 
 // Production environment
 const PRODUCTION = yargs.argv.prod;
@@ -112,7 +113,10 @@ export const sassConvert = () => {
 // js uglify
 export const jsUglify = () => {
     return src(jsFiles.dev)
-        .pipe(babel())
+        .pipe(babel({
+            presets: ['@babel/env']
+        }))
+        .pipe(gulpIf(PRODUCTION, consoleRemove({})))
         .pipe(gulpIf(PRODUCTION, uglify()))
         .pipe(dest(jsFiles.prod))
         .pipe(server.stream());
@@ -131,6 +135,9 @@ export const develop = series(clearProduction, copyDependences, htmlCopy, sassCo
 
 // Gulp production task
 export const buildForProd = series(clearProduction, copyDependences, htmlCopy, sassConvert, jsUglify, copyData);
+
+// Gulp run i production mode
+export const runProduction = series(serve);
 
 // Gulp default task
 export default develop;

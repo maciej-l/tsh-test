@@ -4,8 +4,8 @@
   "description": "TSH Test",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "gulp default",
+    "start-prod": "gulp runProduction",
     "build-prod": "gulp buildForProd --prod"
   },
   "repository": {
@@ -32,6 +32,7 @@
     "gulp-babel": "^8.0.0",
     "gulp-if": "^2.0.2",
     "gulp-imagemin": "^5.0.3",
+    "gulp-remove-logging": "^1.2.0",
     "gulp-sass": "^4.0.2",
     "gulp-sourcemaps": "^2.6.5",
     "gulp-uglify": "^3.0.2",
