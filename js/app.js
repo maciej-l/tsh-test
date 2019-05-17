@@ -70,6 +70,7 @@
                 // append row to table
                 $tableBody.append($tableRow);
                 
+                // add pound badge to table
                 $.each($('.badge-container'), (i,v) => {
                     $(v).html(createPoundBadge($(v).data('rating')));
                 });
