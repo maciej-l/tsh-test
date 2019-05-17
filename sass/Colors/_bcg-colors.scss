@@ -1,0 +1,10 @@
+.bg {
+    
+    &-white {
+        background-color: setColor(background-white);
+    }
+
+    &-light-gray {
+        background-color: lighten(setColor(background-gray), 35);
+    }
+}

@@ -1,0 +1,14 @@
+// set element size
+@function setSize($size: 12) {
+    @return ($size / 16) * 1rem;
+}
+
+// set color in TSH colors
+@function color($color: mine-shaft) {
+    @return map-get($tsh-colors-palette, $color);
+}
+
+// set color of element
+@function setColor($color: default-theme-color) {
+    @return map-get($tsh-colors, $color);
+}

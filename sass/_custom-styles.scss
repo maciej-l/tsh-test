@@ -1,0 +1,27 @@
+body {
+    @include media('>=md') {
+        height: 100vh;
+    }
+}
+
+.container {
+    border-radius: setSize(5);
+    box-shadow: 0px 0px 0px 7px rgba(0,0,0, .05);
+}
+
+.border-radius {
+    border-radius: setSize(5);
+}
+
+.modal-supplier-list {
+    list-style-type: none;
+    padding-left: 0;
+    @include media('>=lg') {
+        padding-left: setSize(40);
+    }
+
+    li {
+        margin: setSize(7) 0;
+        font-size: setSize(14);
+    }
+}

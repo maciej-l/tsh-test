@@ -1,0 +1,15 @@
+.fs {
+    &-15-17 {
+        font-size: setSize(15);
+        @include media('>=lg') {
+            font-size: setSize(17);
+        }
+    }
+    
+    &-58-60 {
+        font-size: setSize(58);
+        @include media('>=lg') {
+            font-size: setSize(60);
+        }
+    }
+}

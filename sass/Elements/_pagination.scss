@@ -1,0 +1,24 @@
+.pagination {
+    .page-item {
+        margin: 0 setSize(5);
+
+        .page-link {
+            color: setColor(pagination-text);
+            font-size: setSize(12);
+            font-weight: 700;
+            border-color: setColor();
+            border-radius: setSize(3);
+            border-color: rgba(setColor(default-theme-color), .5);
+            @include gradient('gray');
+            @include badgeShadow();
+        }
+
+        &.active {
+            .page-link {
+                color: #fff;
+                border-color: rgba(setColor(default-theme-color), .1);
+                @include gradient('dark-gray');
+            }
+        }
+    }
+}
