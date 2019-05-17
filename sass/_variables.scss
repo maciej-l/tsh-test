@@ -6,6 +6,7 @@
 // Color system
 
 $tsh-colors-palette: (
+  alabaster: #f7f7f7,
   alto: #e0e0e0,
   black-haze: #eaecec,
   dove-gray: #666666,
@@ -29,6 +30,7 @@ $tsh-colors: (
   text-gray: color(gray),
   text-white: color(white),
   table-border-gray: color(alto),
+  table-2n-row: color(alabaster),
   table-text: color(emperor)
 );
 
