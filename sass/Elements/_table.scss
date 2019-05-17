@@ -1,12 +1,19 @@
-.table {
-    border: 1px solid setColor(table-border-gray);
-    margin-bottom: 0;
-    border-radius: setSize(5);
+.payments-table {
+    display: inline-block;
+    vertical-align: top;
+    max-width: 100%;
     
+    overflow-x: auto;
+    white-space: nowrap;
+    border-collapse: collapse;
+    border-spacing: 0;
+    @include media('>=md') {
+        display: table;
+    }
+
     thead {
         th {
             padding: setSize(26) setSize(29);
-            border: none;
             background-color: setColor(table-th-bcg);
         }
     }
@@ -15,6 +22,15 @@
         tr {
             &:hover {
                 cursor: pointer;
+                background-color: darken(setColor(table-2n-row), 10%);
+            }
+            
+            &:nth-child(2n) {
+                background-color: setColor(table-2n-row);
+                
+                &:hover {
+                    background-color: darken(setColor(table-2n-row), 10%);
+                }
             }
         }
 
@@ -23,17 +39,22 @@
             color: setColor(table-text);
 
             &.name-container {
+                width: 60%;
                 padding: setSize(20) setSize(29); 
             }
 
             &.badge-container {
+                width: 20%;
                 text-align: center;
             }
 
             &.reference-container,
             &.value-container {
+                width: 10%;
                 text-align: center;
             }
         }
+
+
     }
 }
